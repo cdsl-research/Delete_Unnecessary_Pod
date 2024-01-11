@@ -1,4 +1,36 @@
 # c0a21069
-.bash_historyを参照して，applyされたものをdeleteします．
-delete対象の決定にGoogleスプレッドシートを使用しています．
-Google Sheets APIを使用します．
+Kubernetesの講義で使用することを想定しています．Kubernetesを用いて作成されたPodを削除します．Googleスプレッドシートで課題の進捗を管理し，削除対象を決定します．
+[delete_pod.py](https://github.com/cdsl-research/c0a21069/blob/f31273585a660dac255fac8f062734cdbce5884c/delete_pod.py)はUbuntu 22.04を搭載した仮想マシンで実行しました．
+
+## 使い方
+[delete_pod.py](https://github.com/cdsl-research/c0a21069/blob/f31273585a660dac255fac8f062734cdbce5884c/delete_pod.py)を仮想マシンに置きます．
+```
+sudo python3 delete_pod.py
+```
+で実行します．各ユーザーの.bash_historyを参照するためroot実行する必要があります．
+
+## [delete_pod.py](https://github.com/cdsl-research/c0a21069/blob/f31273585a660dac255fac8f062734cdbce5884c/delete_pod.py)
+### グローバル変数
+#### sheets_id
+spreadsheetIdを入れる．
+#### api_key
+APIキーを入れる．
+### 関数
+#### get_user
+Ubuntuのユーザーを取得し，スプレッドシートの学籍番号と一致するユーザーをリストで返します．
+#### get_path
+指定された拡張子のファイルの絶対パスを取得し，リストで返します．
+#### get_history
+get_userで取得したユーザーの.bash_historyからkubectl applyを取得し，実行時刻とコマンドをリストで返します．
+#### get_progress
+課題の進捗を管理するスプレッドシートを読み取り，JSONファイルとして保存します．
+
+保存したJSONファイルから対応するグループの課題の進捗をリストで返します．
+#### get_log
+スプレッドシートの変更履歴を記録したスプレッドシートを読み取り，JSONファイルとして保存します．
+
+保存したJSONファイルから対応する学生のスプレッドシートの編集履歴をリストで返します．
+#### delete_command
+get_log，kadai_progress，get_historyで取得したリストから実行するコマンドを決定します．
+#### run_delete
+delete_commandで取得したコマンドを実行します．
