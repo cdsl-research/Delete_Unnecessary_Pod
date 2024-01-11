@@ -47,5 +47,7 @@ get_log，kadai_progress，get_historyで取得したリストから実行する
 #### run_delete
 delete_commandで取得したコマンドを実行します．
 
+## [history.sh]
+
 ## [log.gs](https://github.com/cdsl-research/c0a21069/blob/950cd285916e0302e25744507ccd0a9065f3b6e1/log.gs)
 Googleスプレッドシートの拡張機能であるApps Scriptで使用します．
