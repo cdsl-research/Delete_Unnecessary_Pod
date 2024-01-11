@@ -1,4 +1,4 @@
-# c0a21069
+# Delete_Unnecessary_Pod
 Kubernetesの講義で使用することを想定しています．Kubernetesを用いて作成されたPodを削除します．
 Googleスプレッドシートで課題の進捗を管理し，削除対象を決定します．
 [delete_pod.py](https://github.com/cdsl-research/c0a21069/blob/f31273585a660dac255fac8f062734cdbce5884c/delete_pod.py)はUbuntu 22.04を搭載した仮想マシンで実行しました．
